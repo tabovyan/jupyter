@@ -1,0 +1,19 @@
+syntax = "proto3";
+
+package tigran;
+
+message MessageRequest {
+ string message = 1;
+}
+
+message MessageResponse {
+  string message = 1;
+}
+
+service MessageService {
+  rpc UnaryGetMessage(MessageRequest) returns (MessageResponse) {};
+  rpc StreamGetMessage(stream MessageRequest) returns (stream MessageResponse) {};
+  rpc ClientStreamGetMessage(stream MessageRequest) returns (MessageResponse) {};
+  rpc ServerStreamGetMessage(MessageRequest) returns (stream MessageResponse) {}; 
+}
+
